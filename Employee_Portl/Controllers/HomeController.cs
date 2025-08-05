@@ -7,6 +7,8 @@ namespace Employee_Portl.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        //my first git change
+        //hello again
 
         public HomeController(ILogger<HomeController> logger)
         {
