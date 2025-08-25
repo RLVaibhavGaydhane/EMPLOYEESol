@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Employee_Portl.Models.Attendance>
+
+@{
+    ViewData["Title"] = "Attendance Records";
+}
+@{
+    int SerialNumber = 1;
+}
+
+<h2 class="mb-3">Attendance Records</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">+ Mark Attendance</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Sr.No</th>
+
+            <th>Employee</th>
+            <th>Date</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <th>Total Hr  </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(SerialNumber)</td>
+
+                    <td>@item.Employee.FullName</td> <!-- assuming Employee has FullName -->
+                    <td>@item.Date.ToString("yyyy-MM-dd")</td>
+                    <td>@item.CheckIn?.ToString(@"hh\:mm")</td>
+                    <td>@item.CheckOut?.ToString(@"hh\:mm")</td>
+                    <td>
+                        @if (item.CheckIn.HasValue && item.CheckOut.HasValue)
+                        {
+                            var total = (item.CheckOut.Value - item.CheckIn.Value).TotalHours;
+                            @($"{total:F2} hrs")
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+                SerialNumber++;
+
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center text-muted">No attendance records found.</td>
+            </tr>
+        }
+    </tbody>
+</table>

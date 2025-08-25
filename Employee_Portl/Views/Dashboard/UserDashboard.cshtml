@@ -1,0 +1,178 @@
+﻿@{
+    ViewData["Title"] = "User Dashboard";
+    Layout = "_Layout"; // if you already have a shared layout
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f9;
+            color: #333;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #007bff;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+        }
+
+            .sidebar h2 {
+                font-size: 1.5rem;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+
+            .sidebar a {
+                color: white;
+                text-decoration: none;
+                padding: 12px 15px;
+                margin: 8px 0;
+                border-radius: 6px;
+                transition: background 0.3s;
+                display: block;
+            }
+
+                .sidebar a:hover {
+                    background: rgba(255, 255, 255, 0.2);
+                }
+
+        /* Main content */
+        .main {
+            margin-left: 250px;
+            padding: 20px 40px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+            .topbar h1 {
+                font-size: 1.6rem;
+                color: #007bff;
+            }
+
+        .user-info {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Dashboard Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+            }
+
+            .card h3 {
+                font-size: 1.2rem;
+                color: #007bff;
+                margin-bottom: 10px;
+            }
+
+            .card p {
+                font-size: 1.1rem;
+                color: #333;
+            }
+
+ 
+        {
+            position: relative;
+            width: 100%;
+            height: auto;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .main {
+            margin-left: 0;
+            margin-top: 20px;
+        }
+
+        .topbar {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>📊 Dashboard</h2>
+        <a href="#">🏠 Home</a>
+        <a href="#">👥 Employees</a>
+        <a href="#">📅 Attendance</a>
+        <a href="#">📂 Projects</a>
+        <a href="#">⚙ Settings</a>
+        <a href="/Identity/Account/Logout">🚪 Logout</a>
+    </div>
+
+    <!-- Main content -->
+    <div class="main">
+        <div class="topbar">
+            <h1>Welcome, @User.Identity?.Name!</h1>
+            <div class="user-info">
+                @DateTime.Now.ToString("dddd, dd MMM yyyy")
+            </div>
+        </div>
+
+        <!-- Dashboard Cards -->
+        <div class="cards">
+            <div class="card">
+                <h3>Total Employees</h3>
+                <p>120</p>
+            </div>
+            <div class="card">
+                <h3>Projects</h3>
+                <p>15 Active</p>
+            </div>
+            <div class="card">
+                <h3>Attendance</h3>
+                <p>95% Today</p>
+            </div>
+            <div class="card">
+                <h3>Notifications</h3>
+                <p>3 New</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

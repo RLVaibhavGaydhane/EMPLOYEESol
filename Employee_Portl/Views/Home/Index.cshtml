@@ -1,8 +1,125 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Welcome - Employee Portal";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(to right, #007bff, #00c6ff);
+            color: white;
+            padding: 20px 50px;
+            text-align: center;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 50px;
+            background: white;
+            border-bottom: 3px solid #007bff;
+        }
+
+        .hero-text {
+            max-width: 50%;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+
+        .hero img {
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .about {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .about h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background: #222;
+            color: #aaa;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Employee Portal</h2>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Welcome to Our Employee Portal</h1>
+            <p>Manage your employees, track attendance, assign roles, and streamline your company’s workflow — all in one place.</p>
+            <a href="/Identity/Account/Login" class="btn-primary">Get Started</a>
+        </div>
+        <img src="data:image/jpeg;base64,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" alt="Company Team" />
+    </section>
+
+    <section class="about">
+        <h2>About Our Company</h2>
+        <p>
+            At <strong>ABC Solutions Pvt. Ltd.</strong>, we believe employees are the heart of our success.
+            This portal helps us connect, collaborate, and grow together.
+            With features like employee management, HR tools, and role-based access,
+            our portal ensures efficiency and transparency across all departments.
+        </p>
+    </section>
+
+    <footer>
+        &copy; @DateTime.Now.Year - Employee Portal | Designed with ❤️
+    </footer>
+</body>
+</html>

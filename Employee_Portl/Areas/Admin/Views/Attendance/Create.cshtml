@@ -1,0 +1,46 @@
+﻿@model Employee_Portl.ViewModel.AttendanceViewModel
+
+@{
+    ViewData["Title"] = "Create Attendance";
+}
+
+<div class="container mt-4">
+    <h3>Create Attendance</h3>
+
+    <form asp-action="Create" method="post">
+        <div class="mb-3">
+            <label asp-for="EmployeeId" class="form-label">Employee</label>
+            <select asp-for="EmployeeId" asp-items="Model.Employees" class="form-select">
+                <option value="">--Select Employee--</option>
+            </select>
+            <span asp-validation-for="EmployeeId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Date" class="form-label">Date</label>
+            <input asp-for="Date" type="date" class="form-control" />
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CheckIn" class="form-label">Check-In Time</label>
+            <input asp-for="CheckIn" type="time" class="form-control" />
+            <span asp-validation-for="CheckIn" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CheckOut" class="form-label">Check-Out Time</label>
+            <input asp-for="CheckOut" type="time" class="form-control" />
+            <span asp-validation-for="CheckOut" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

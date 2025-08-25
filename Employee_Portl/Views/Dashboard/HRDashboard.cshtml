@@ -1,0 +1,182 @@
+﻿@{
+    ViewData["Title"] = "HR Dashboard";
+    Layout = "_Layout"; // shared layout for header/footer
+}
+
+<div class="dashboard-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>👩‍💼 HR</h2>
+        <a href="#">🏠 Overview</a>
+        <a href="#">👥 Employee Records</a>
+        <a href="#">📄 Recruitment</a>
+        <a href="#">💰 Payroll</a>
+        <a href="#">📑 Compliance</a>
+        <a href="#">📊 Reports</a>
+        <a href="/Identity/Account/Logout">🚪 Logout</a>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+        <!-- Topbar -->
+        <div class="topbar">
+            <h1>Welcome, HR @User.Identity?.Name!</h1>
+            <div class="user-info">
+                @DateTime.Now.ToString("dddd, dd MMM yyyy")
+            </div>
+        </div>
+
+        <!-- HR Cards -->
+        <div class="cards">
+            <div class="card">
+                <h3>Total Employees</h3>
+                <p>320</p>
+            </div>
+            <div class="card">
+                <h3>New Hires (This Month)</h3>
+                <p>12</p>
+            </div>
+            <div class="card">
+                <h3>Open Positions</h3>
+                <p>8</p>
+            </div>
+            <div class="card">
+                <h3>Pending Payroll</h3>
+                <p>₹ 2,40,000</p>
+            </div>
+        </div>
+
+        <!-- Recruitment Section -->
+        <div class="activity-section">
+            <h2>📄 Recruitment Status</h2>
+            <table class="activity-table">
+                <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>Department</th>
+                        <th>Applicants</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Software Engineer</td>
+                        <td>IT</td>
+                        <td>25</td>
+                        <td><span class="status pending">Shortlisting</span></td>
+                    </tr>
+                    <tr>
+                        <td>HR Executive</td>
+                        <td>HR</td>
+                        <td>15</td>
+                        <td><span class="status success">Interviewing</span></td>
+                    </tr>
+                    <tr>
+                        <td>Accountant</td>
+                        <td>Finance</td>
+                        <td>10</td>
+                        <td><span class="status pending">Open</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Employee Records -->
+        <div class="activity-section">
+            <h2>👥 Recent Employee Records</h2>
+            <table class="activity-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Joining Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Anita Sharma</td>
+                        <td>IT</td>
+                        <td>10 Aug 2025</td>
+                        <td><span class="status success">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>Rajesh Patel</td>
+                        <td>Finance</td>
+                        <td>18 Aug 2025</td>
+                        <td><span class="status success">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>Meena Reddy</td>
+                        <td>HR</td>
+                        <td>01 Sep 2025</td>
+                        <td><span class="status pending">Onboarding</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Payroll -->
+        <div class="activity-section">
+            <h2>💰 Payroll Overview</h2>
+            <p><strong>Processed:</strong> ₹ 15,60,000 | <strong>Pending:</strong> ₹ 2,40,000</p>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        body {
+            background: #f4f6f9;
+        }
+
+        .dashboard-container {
+            display: flex;
+            min-height: calc(100vh - 120px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background: #6f42c1;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar h2 {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 14px;
+            margin: 6px 0;
+            border-radius: 6px;
+            transition: background 0.3s;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Main */
+        .main {
+            flex: 1;
+            padding: 20px 40px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: white;
+            border-radius:
+        }
+        }
